@@ -56,7 +56,11 @@ def getopts():
     return (options, args)
 
 def persist_html(html, count, options):
-    path = os.path.join(options.dest_dir, FILE_NAME % count)
+    file_name = FILE_NAME % count
+    if count == 1:
+        file_name = 'index.html'
+
+    path = os.path.join(options.dest_dir, file_name)
     fh = open(path, 'w')
     fh.write(html)
     fh.close()
@@ -96,7 +100,7 @@ def main():
 
     print 'Files written to:', options.dest_dir
     if options.browser:
-        webbrowser.open('file://%s/question_1.html' % options.dest_dir)
+        webbrowser.open('file://%s/index.html' % options.dest_dir)
 
 if __name__ == '__main__':
     main()

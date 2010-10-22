@@ -18,6 +18,13 @@ FILE_NAME = 'question_%s.html'
 PROMPT = 'Would you like another question? '
 QUESTIONS_DIR = 'questions'
 
+def copy_libraries(options):
+    path = os.path.join(os.getcwd(), 'www')
+    for f in os.listdir(path):
+        if f.rsplit('.', 1)[1] in ('js', 'css', 'png'):
+            shutil.copyfile(os.path.join(path, f),
+                            os.path.join(options.dest_dir, f))
+
 def fetch_questions(options):
     re_filter = re.compile(options.filter, re.I | re.M)
     cwd = os.getcwd()
@@ -78,6 +85,7 @@ def main():
     options, args = getopts()
     template = open(DEFAULT_TEMPLATE).read()
     setup_base_dir(options.dest_dir)
+    copy_libraries(options)
 
     # Loop over and persist questions
     count = 0

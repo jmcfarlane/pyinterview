@@ -1,0 +1,35 @@
+#answer-toggle, #correct-answer {
+  margin-top: 40px;
+}
+
+#answer-toggle H1, #correct-answer H1 {
+  color: #00FF00;
+  cursor: pointer;
+  display: inline;
+  font-size: 1em;
+}
+
+#footer {
+  font-size: .8em;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#next {
+  display: inline;
+  float: right;
+}
+
+#next H1 {
+  display: inline;
+  font-size: 1em;
+}
+
+#next H1 A {
+  color: white;
+  text-decoration: none;
+}
+
+#next H1 A:hover {
+  background-color: #444499;
+}

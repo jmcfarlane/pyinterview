@@ -1,19 +1,27 @@
 <html>
   <head>
     <title>Question #%(count)s</title>
-    <link type="text/css"
-          rel="stylesheet"
-          href="http://docutils.sourceforge.net/sandbox/stylesheets/voidspace.css" />
+    <link type="text/css" rel="stylesheet" href="voidspace.css" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
   </head>
   <body>
     %(body)s
 
-    <div align="right" style="margin: 25px">
-      <a href="%(next)s" style="font-weight:bold">Next</a>
+    <div class="section" id="answer-toggle">
+      <h1>View the correct answer</h1>
     </div>
 
-    <div align="center" style="margin-top:25px;">
-      Generated on %(now)s by Pyinterview v%(version)s
+    <div class="section" id="next">
+      <h1><a href="%(next)s">Next</a></h1>
     </div>
+
+    <div id="footer">
+      Generated on %(now)s by
+      <a href="http://github.com/jmcfarlane/pyinterview">Pyinterview</a>
+      v%(version)s
+    </div>
+
+    <script type="text/javascript" src="jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="pyinterview.js"></script>
   </body>
 </html>

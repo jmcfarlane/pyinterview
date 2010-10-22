@@ -3,6 +3,7 @@ import datetime
 import optparse
 import os
 import random
+import re
 import shutil
 import sys
 import webbrowser
@@ -18,12 +19,15 @@ PROMPT = 'Would you like another question? '
 QUESTIONS_DIR = 'questions'
 
 def fetch_questions(options):
+    re_filter = re.compile(options.filter, re.I | re.M)
     cwd = os.getcwd()
     files = [f for f in os.listdir(QUESTIONS_DIR) if f.endswith('.rst')]
-    count = len(files)
-    for i in xrange(count):
-        f = files[random.randrange(count)]
-        yield open(os.path.join(cwd, QUESTIONS_DIR, f)).read()
+    random.shuffle(files)
+    for count, f in enumerate(files):
+        contents = open(os.path.join(cwd, QUESTIONS_DIR, f)).read()
+        if re_filter.search(contents) or re_filter.search(f):
+            print 'Processing:', f
+            yield contents
 
     # Include a congratulations page
     yield open(os.path.join(cwd, 'templates', 'finished.rst')).read()
@@ -32,8 +36,13 @@ def getopts():
     p = optparse.OptionParser('Usage: %prog [options]')
     p.add_option('-b', '--browser', dest='browser', action='store_true')
     p.add_option('-d', '--output-dir', dest='dest_dir', type='str')
+    p.add_option('-f', '--filter', dest='filter', type='str')
+
+    # Default values
     p.set_defaults(browser=False)
+    p.set_defaults(filter='.*')
     p.set_defaults(dest_dir='/tmp')
+
     options, args = p.parse_args()
     options.dest_dir = os.path.join(options.dest_dir, DEST_DIR)
 

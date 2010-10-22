@@ -1,0 +1,36 @@
+======
+Foobar
+======
+
+Goal
+++++
+
+Describe the goal.
+
+Definition
+++++++++++
+
+Define the problem, provide context.
+
+REFERENCE: link
+
+Requirements
+++++++++++++
+
+The function should have the following signature::
+
+ def foo():
+    pass
+
+Output
+^^^^^^
+
+The function should print to stdout, in the form...
+
+Correct answer
+++++++++++++++
+
+This is the expected correct answer::
+ 
+ foo()
+ >>> bar

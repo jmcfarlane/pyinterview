@@ -32,8 +32,12 @@ Requirements
 
 The function should have the following signature::
 
- def move(disc, src, aux, dest):
+ def towers(disc, src, aux, dest):
     pass
+
+The above function will be called like this::
+
+ >>> towers(3, 'Source', 'Auxillary', 'Destination')
 
 Output
 ^^^^^^
@@ -49,7 +53,6 @@ Correct answer
 
 This is the expected correct answer::
  
- >>> move(3, 'Source', 'Auxillary', 'Destination')
  Move disc 1 from Source to Destination
  Move disc 2 from Source to Auxillary
  Move disc 1 from Destination to Auxillary
